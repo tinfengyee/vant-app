@@ -3,6 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// Layout
+import Layout from '@/layout'
+
 /**
  * constantRoutes
  * a base page that does not have permission requirements
@@ -11,8 +14,20 @@ Vue.use(Router)
 export const constantRoutes = [
   {
     path: '/',
-    name: 'goods',
-    component: () => import('@/views/goods')
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/home/index')
+      },
+      {
+        path: 'goods',
+        name: 'goods',
+        component: () => import('@/views/goods')
+      }
+    ]
   },
   {
     path: '/user',
@@ -23,11 +38,6 @@ export const constantRoutes = [
     path: '/cart',
     name: 'cart',
     component: () => import('@/views/cart')
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/views/home/index')
   }
 ]
 

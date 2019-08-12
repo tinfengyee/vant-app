@@ -1,9 +1,7 @@
 <template>
-  <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
-    </transition>
-  </section>
+  <transition>
+    <router-view :key="key" class="page" />
+  </transition>
 </template>
 
 <script>
@@ -17,23 +15,15 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '~@/styles/variables.scss';
-
-.app-main {
-  min-height: calc(100vh - #{$navbarHeight});
+<style lang="scss">
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
-  position: relative;
-  overflow: hidden;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
-.fixed-header + .app-main {
-  padding-top: 50px;
-}
-
-// fix css style bug in open el-dialog 这里去掉scoped放在下面
-// .el-popup-parent--hidden {
-//   .fixed-header {
-//     padding-right: 15px;
-//   }
-// }
 </style>

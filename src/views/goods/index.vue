@@ -1,36 +1,38 @@
 <template>
   <div class="goods">
-    <van-swipe class="goods-swipe" :autoplay="3000">
-      <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
-        <img :src="thumb" />
-      </van-swipe-item>
-    </van-swipe>
+    <div class="goods-wrapper">
+      <van-swipe class="goods-swipe" :autoplay="3000">
+        <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
+          <img :src="thumb" />
+        </van-swipe-item>
+      </van-swipe>
 
-    <van-cell-group>
-      <van-cell>
-        <div class="goods-title">{{ goods.title }}</div>
-        <div class="goods-price">{{ formatPrice(goods.price) }}</div>
-      </van-cell>
-      <van-cell class="goods-express">
-        <van-col span="10">运费：{{ goods.express }}</van-col>
-        <van-col span="14">剩余：{{ goods.remain }}</van-col>
-      </van-cell>
-    </van-cell-group>
+      <van-cell-group>
+        <van-cell>
+          <div class="goods-title">{{ goods.title }}</div>
+          <div class="goods-price">{{ formatPrice(goods.price) }}</div>
+        </van-cell>
+        <van-cell class="goods-express">
+          <van-col span="10">运费：{{ goods.express }}</van-col>
+          <van-col span="14">剩余：{{ goods.remain }}</van-col>
+        </van-cell>
+      </van-cell-group>
 
-    <van-cell-group class="goods-cell-group">
-      <van-cell value="进入店铺" icon="shop-o" is-link @click="sorry">
-        <template slot="title">
-          <span class="van-cell-text">有赞的店</span>
-          <van-tag class="goods-tag" type="danger">官方</van-tag>
-        </template>
-      </van-cell>
-      <van-cell title="线下门店" icon="location-o" is-link @click="sorry" />
-    </van-cell-group>
+      <van-cell-group class="goods-cell-group">
+        <van-cell value="进入店铺" icon="shop-o" is-link @click="sorry">
+          <template slot="title">
+            <span class="van-cell-text">有赞的店</span>
+            <van-tag class="goods-tag" type="danger">官方</van-tag>
+          </template>
+        </van-cell>
+        <van-cell title="线下门店" icon="location-o" is-link @click="sorry" />
+      </van-cell-group>
 
-    <van-cell-group class="goods-cell-group">
-      <van-cell title="查看商品详情" is-link @click="sorry" />
-    </van-cell-group>
-
+      <van-cell-group class="goods-cell-group">
+        <van-cell title="查看商品详情" is-link @click="sorry" />
+      </van-cell-group>
+    </div>
+    <!-- 
     <van-goods-action>
       <van-goods-action-icon icon="chat-o" @click="sorry">
         客服
@@ -44,12 +46,14 @@
       <van-goods-action-button type="danger" @click="sorry">
         立即购买
       </van-goods-action-button>
-    </van-goods-action>
+    </van-goods-action> -->
+
+    <van-submit-bar :price="3050" label="应付合计" button-text="去结算" @submit="onSubmit" />
   </div>
 </template>
 
 <script>
-import { Tag, Col, Icon, Cell, CellGroup, Swipe, Toast, SwipeItem, GoodsAction, GoodsActionIcon, GoodsActionButton } from 'vant'
+import { SubmitBar, Tag, Col, Icon, Cell, CellGroup, Swipe, Toast, SwipeItem } from 'vant'
 
 export default {
   components: {
@@ -60,9 +64,10 @@ export default {
     [CellGroup.name]: CellGroup,
     [Swipe.name]: Swipe,
     [SwipeItem.name]: SwipeItem,
-    [GoodsAction.name]: GoodsAction,
-    [GoodsActionIcon.name]: GoodsActionIcon,
-    [GoodsActionButton.name]: GoodsActionButton
+    [SubmitBar.name]: SubmitBar
+    // [GoodsAction.name]: GoodsAction,
+    // [GoodsActionIcon.name]: GoodsActionIcon,
+    // [GoodsActionButton.name]: GoodsActionButton
   },
 
   data() {
@@ -81,6 +86,9 @@ export default {
   },
 
   methods: {
+    onSubmit() {
+      console.log('he')
+    },
     formatPrice() {
       return '¥' + (this.goods.price / 100).toFixed(2)
     },
@@ -98,8 +106,10 @@ export default {
 
 <style lang="scss">
 .goods {
-  padding-bottom: 50px;
-
+  padding-bottom: 46.66px;
+  .goods-wrapper {
+    padding-bottom: 46.66px;
+  }
   &-swipe {
     img {
       width: 100%;
@@ -131,6 +141,9 @@ export default {
 
   &-tag {
     margin-left: 5px;
+  }
+  .van-submit-bar {
+    bottom: 1.33333rem;
   }
 }
 </style>

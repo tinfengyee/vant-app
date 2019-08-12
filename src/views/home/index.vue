@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <van-swipe class="home-swipe" :autoplay="3000" indicator-color="#fff" @click.native="handlePre">
-      <van-swipe-item v-for="(img, index) in imageList" :key="index">
-        <img :src="img" />
-      </van-swipe-item>
-    </van-swipe>
+    <div class="swipe-box">
+      <van-swipe class="home-swipe" :autoplay="3000" indicator-color="#fff" @click.native="handlePre">
+        <van-swipe-item v-for="(img, index) in imageList" :key="index">
+          <img :src="img" />
+        </van-swipe-item>
+      </van-swipe>
+    </div>
 
     <van-cell-group class="home-shop">
       <van-cell title="奥腾汇店" label="距离您1.4km">
@@ -17,15 +19,12 @@
 
     <van-cell-group class="home-cell-group">
       <van-cell title="现在下单" label="ORDER NOW">
-        <!-- <van-icon name="point-gift-o" color="#87684B" /> -->
         <svg-icon icon-class="coffee" />
       </van-cell>
       <van-cell title="咖啡钱包" label="COFFEE WALLET">
-        <!-- <van-icon name="point-gift-o" color="#87684B" /> -->
         <svg-icon icon-class="money" />
       </van-cell>
       <van-cell title="送她咖啡" label="SEND COFFEE">
-        <!-- <van-icon name="point-gift-o" color="#87684B" /> -->
         <svg-icon icon-class="gift" />
       </van-cell>
       <van-cell title="企业账户" label="ENTERPRISE ACCOUNT">
@@ -34,7 +33,7 @@
       </van-cell>
     </van-cell-group>
 
-    <van-image width="100%" fit="contain" src="http://120.77.217.7:8888/download?filename=/www/vant-app/img/coffee2.png" />
+    <van-image width="100%" height="2rem" fit="cover" :src="bottomImg" />
   </div>
 </template>
 
@@ -58,11 +57,8 @@ export default {
   name: 'home',
   data() {
     return {
-      radio: '1',
-      imageList: [
-        'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
-        'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
-      ]
+      bottomImg: 'http://localhost:5000/images/success2.png',
+      imageList: ['http://localhost:5000/images/apple1.jpeg', 'http://localhost:5000/images/apple2.jpeg']
     }
   },
   methods: {
@@ -76,7 +72,11 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: #fff;
-  padding-bottom: 50px;
+  /* 解决navbar点击内容抖动 */
+  .swipe-box {
+    transform: translateZ(0);
+    overflow: hidden;
+  }
   &-swipe {
     max-height: 228px;
     img {
