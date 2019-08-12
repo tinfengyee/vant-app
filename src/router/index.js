@@ -11,8 +11,23 @@ Vue.use(Router)
 export const constantRoutes = [
   {
     path: '/',
+    name: 'goods',
+    component: () => import('@/views/goods')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('@/views/user')
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: () => import('@/views/cart')
+  },
+  {
+    path: '/home',
     name: 'home',
-    component: () => import('@/views/Home')
+    component: () => import('@/views/home/index')
   }
 ]
 

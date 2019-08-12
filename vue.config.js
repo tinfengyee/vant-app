@@ -14,8 +14,8 @@ module.exports = {
   productionSourceMap: false,
 
   css: {
-    // 是否使用css分离插件 ExtractTextPlugin
-    extract: true,
+    // 是否使用css分离插件 ExtractTextPlugin //开启后无法热更新,除非使用@import ''方法
+    extract: false,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
