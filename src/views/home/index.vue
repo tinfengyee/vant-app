@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <div class="swipe-box">
-      <van-swipe class="home-swipe" :autoplay="3000" indicator-color="#fff" @click.native="handlePre">
+    <div class="home-swipe-wrapper">
+      <van-swipe class="home-swipe-box" :autoplay="3000" indicator-color="#fff" @click.native="handlePre">
         <van-swipe-item v-for="(img, index) in imageList" :key="index">
-          <img :src="img" />
+          <van-image class="home-swipe-img" width="100%" fit="cover" :src="img" />
         </van-swipe-item>
       </van-swipe>
     </div>
@@ -76,16 +76,15 @@ export default {
 .home {
   background: #fff;
   /* 解决navbar点击内容抖动 */
-  .swipe-box {
+  &-swipe-wrapper {
     transform: translateZ(0);
     overflow: hidden;
   }
-  &-swipe {
+  &-swipe-box {
     max-height: 228px;
-    img {
-      width: 100%;
-      display: block;
-    }
+  }
+  &-swipe-img {
+    height: 228px;
   }
 
   &-shop {
@@ -99,6 +98,7 @@ export default {
       }
     }
   }
+
   &-cell-group {
     .van-cell {
       height: 50px;
@@ -130,7 +130,5 @@ export default {
   .van-hairline--top-bottom::after {
     border-width: 0px 0;
   }
-  // &-bottom-img {
-  // }
 }
 </style>

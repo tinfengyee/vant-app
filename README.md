@@ -43,7 +43,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 解决办法: 首先给swipe组件加一个外层容器 `.swipe-box` 然后增加 css 代码
 
 ```css
-  .swipe-box {
+  &-swipe-wrapper {
     transform: translateZ(0);
     overflow: hidden;
   }
@@ -151,4 +151,14 @@ transform: scale(0.9);
 ```
 
 ## [better-scroll无法滚动](https://blog.csdn.net/qiqi_77_/article/details/79361413#commentBox)
+
+## vue中keep-alive组件的使用
+
+[vue中keep-alive组件的使用](http://www.fly63.com/article/detial/3923)
+
+[vue开启keep-alive需要注意的问题](https://www.jianshu.com/p/be24d09f10bf)
+
+[Vue / keep-alive](https://www.jianshu.com/p/4b55d312d297)
+
+[Vue.js 中的动态路由](https://blog.csdn.net/zjq_1314520/article/details/79523109)
 

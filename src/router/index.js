@@ -15,7 +15,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    redirect: '/menu',
     children: [
       {
         path: 'home',
