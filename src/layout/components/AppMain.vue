@@ -1,6 +1,8 @@
 <template>
-  <transition>
-    <router-view :key="key" class="page" />
+  <transition name="fade" mode="out-in">
+    <keep-alive>
+      <router-view :key="key" />
+    </keep-alive>
   </transition>
 </template>
 
@@ -14,16 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.page {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  margin: 0 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-</style>

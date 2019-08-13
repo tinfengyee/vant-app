@@ -13,7 +13,15 @@
 
 .v-enter-active,
 .v-leave-active {
-  transition: transform 0.38s ease;
+  transition: all 0.38s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* fade */

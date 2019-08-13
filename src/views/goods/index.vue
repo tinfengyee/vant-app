@@ -56,6 +56,7 @@
 import { SubmitBar, Tag, Col, Icon, Cell, CellGroup, Swipe, Toast, SwipeItem } from 'vant'
 
 export default {
+  name: 'Goods',
   components: {
     [Tag.name]: Tag,
     [Col.name]: Col,
@@ -69,7 +70,6 @@ export default {
     // [GoodsActionIcon.name]: GoodsActionIcon,
     // [GoodsActionButton.name]: GoodsActionButton
   },
-
   data() {
     return {
       goods: {
@@ -84,7 +84,9 @@ export default {
       }
     }
   },
-
+  created() {
+    console.log(this.$route)
+  },
   methods: {
     onSubmit() {
       console.log('he')

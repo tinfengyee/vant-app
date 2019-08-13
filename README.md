@@ -106,13 +106,15 @@ transform: scale(0.9);
 
 ## Vue组件 Tabbar 切换过渡抖动
 
-原因是因为使用了fixed ?
+原因是因为使用了fixed 跟 transform?
 
 解决办法:
 
 [vuejs 过渡动画 头部抖动问题](https://segmentfault.com/q/1010000010884379)
 
 [vue 过渡动画抖动问题处理](https://blog.csdn.net/qq_25610161/article/details/81940863)
+
+或者不同位移的动画,只用fade动画
 
 ```html
 <router-view :key="key" class="page" /> // 1.现在router-view设置一个类
@@ -144,5 +146,9 @@ transform: scale(0.9);
   transition: transform 0.38s ease;
 }
 
+// 或者设置样式代码直接在.v-*-active里面设置
+
 ```
+
+## [better-scroll无法滚动](https://blog.csdn.net/qiqi_77_/article/details/79361413#commentBox)
 

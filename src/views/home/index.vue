@@ -54,12 +54,15 @@ Vue.use(Swipe)
   .use(Panel)
   .use(Icon)
 export default {
-  name: 'home',
+  name: 'Home',
   data() {
     return {
       bottomImg: 'http://localhost:5000/images/success2.png',
       imageList: ['http://localhost:5000/images/apple1.jpeg', 'http://localhost:5000/images/apple2.jpeg']
     }
+  },
+  created() {
+    console.log(this.$route)
   },
   methods: {
     handlePre() {
