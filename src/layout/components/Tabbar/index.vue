@@ -13,7 +13,7 @@
         <span>订单</span>
         <svg-icon icon-class="订单" slot="icon" />
       </van-tabbar-item>
-      <van-tabbar-item info="3" replace>
+      <van-tabbar-item info="3" replace to="/cart">
         <span>购物车</span>
         <svg-icon icon-class="购物车" slot="icon" />
       </van-tabbar-item>
@@ -41,6 +41,9 @@ export default {
 
 <style lang="scss" scpoed>
 .tabbar {
+  .van-tabbar {
+    height: $tabbarHeight;
+  }
   .van-tabbar-item {
     &__text {
       span {

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <div class="home-swipe-wrapper">
-      <van-swipe class="home-swipe-box" :autoplay="3000" indicator-color="#fff" @click.native="handlePre">
-        <van-swipe-item v-for="(img, index) in imageList" :key="index">
+      <van-swipe class="home-swipe-box" :autoplay="3000" indicator-color="#fff">
+        <van-swipe-item @click="handlePre" v-for="(img, index) in imageList" :key="index">
           <van-image class="home-swipe-img" width="100%" fit="cover" :src="img" />
         </van-swipe-item>
       </van-swipe>
@@ -53,6 +53,7 @@ Vue.use(Swipe)
   .use(Col)
   .use(Panel)
   .use(Icon)
+
 export default {
   name: 'Home',
   data() {
@@ -60,9 +61,6 @@ export default {
       bottomImg: 'http://localhost:5000/images/success2.png',
       imageList: ['http://localhost:5000/images/apple1.jpeg', 'http://localhost:5000/images/apple2.jpeg']
     }
-  },
-  created() {
-    console.log(this.$route)
   },
   methods: {
     handlePre() {
@@ -75,6 +73,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   background: #fff;
+  padding-bottom: #{$tabbarHeight + 10px};
   /* 解决navbar点击内容抖动 */
   &-swipe-wrapper {
     transform: translateZ(0);

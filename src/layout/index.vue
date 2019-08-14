@@ -29,8 +29,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  padding-bottom: 46.66px;
+  // padding-bottom: $tabbarHeight;
   overflow-x: hidden;
 }
-
 </style>

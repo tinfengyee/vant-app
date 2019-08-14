@@ -10,23 +10,65 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
+## 模块
+
+###  cart
+
+价格保留两位小数 
+
+```js
+formatPrice(price) {
+      return (price / 100).toFixed(2)
+    },
+        
+提交文字的按钮 , 这里还有checked的数量
+submitBarText() {
+      const count = this.checkedResult.length
+      return '结算' + (count ? `(${count})` : '')
+    },
 ```
 
-### Run your tests
-```
-npm run test
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 其他的东西
+
+
+
+Math.abs(Math.round(pos.y)) ,`round`把不同的数舍入为最接近的整数
+
+
+
+[Vue-给对象新增属性（使用Vue.$set()）](https://www.jianshu.com/p/71b1807b1815)
+
+Vue 不允许在已经创建的实例上动态添加新的根级响应式属性 (root-level reactive property)。然而它可以使用 Vue.set(object, key, value) 方法将响应属性添加到嵌套的对象上
+
+Vue.set(vm.obj, 'e', 0) / his.$set(this.obj,'e',02)
+
+
+
+// 代替 `Object.assign(this.obj, { a: 1, e: 2 })`
+
+this.obj= Object.assign({}, this.obj, { a: 1, e: 2 })
+
+# 知道但是没解决的问题
+
+home组件的首页轮播图,点击没有跳到指定的图片
+
+**最后一个菜单由于高度不够,导致active不能设置**
+
+上图
+
+![1565703446848](media/1565703446848.png)
+
+应该可以计算上面菜单的高度,然后设置刚好的该高度
+
+,滚动了,怎么算...暂时
+
+还有滑动过渡,再滑动回来会导致位置乱了,要重新从菜单0出发才正常,后面再想解决办法.
+
+> 预计解决: 滑动过渡可以把scrollY 设置成计算属性,超过最大值返回 ....不行
+>
+> 暂时先给最后一个li设置一个margin解决
 
 
 
@@ -152,6 +194,27 @@ transform: scale(0.9);
 
 ## [better-scroll无法滚动](https://blog.csdn.net/qiqi_77_/article/details/79361413#commentBox)
 
+### 由这问题,可以引出vh的用法
+
+可以结合calc用
+
+```css
+身高：100vh =视口高度的100％ 
+
+
+身高：100 ％ =父元素高度的100％
+
+1、min-height: calc(100vh - 0rem);
+
+2、width: calc(100% - 0.4rem);
+
+3、width: calc(100vw - 0.4rem);
+```
+
+[视区相关单位vw, vh..简介以及可实际应用场景](https://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/)
+
+
+
 ## vue中keep-alive组件的使用
 
 [vue中keep-alive组件的使用](http://www.fly63.com/article/detial/3923)
@@ -162,3 +225,45 @@ transform: scale(0.9);
 
 [Vue.js 中的动态路由](https://blog.csdn.net/zjq_1314520/article/details/79523109)
 
+## 一件很傻的事
+
+```js
+    _initScroll() {
+      this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+        click: true
+      })
+// 之前一直没这样用,this.menuScroll, 直接点一个属性出来给Vue
+```
+
+
+
+## Temp
+
+```js
+goods: [
+        {
+          id: '1',
+          title: '进口香蕉',
+          desc: '约250g，2根',
+          price: 200,
+          num: 1,
+          thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg'
+        },
+        {
+          id: '2',
+          title: '陕西蜜梨',
+          desc: '约600g',
+          price: 690,
+          num: 1,
+          thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg'
+        },
+        {
+          id: '3',
+          title: '美国伽力果',
+          desc: '约680g/3个',
+          price: 2680,
+          num: 1,
+          thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg'
+        }
+      ]
+```

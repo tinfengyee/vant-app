@@ -15,7 +15,7 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/menu',
+    redirect: '/home',
     children: [
       {
         path: 'home',
@@ -24,25 +24,20 @@ export const constantRoutes = [
       },
       {
         path: 'goods',
-        name: 'goods',
-        component: () => import('@/views/goods')
+        name: 'Goods',
+        component: () => import('@/views/goods/index')
+      },
+      {
+        path: 'cart',
+        name: 'Cart',
+        component: () => import('@/views/cart')
       }
     ]
   },
   {
     path: '/user',
-    name: 'user',
+    name: 'User',
     component: () => import('@/views/user')
-  },
-  {
-    path: '/cart',
-    name: 'cart',
-    component: () => import('@/views/cart')
-  },
-  {
-    path: '/menu',
-    name: 'Menu',
-    component: () => import('@/views/menu')
   }
 ]
 
